@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <style type="text/css">
+            .ui-widget {
+                font-size:14px !important;
+            }
+
+        </style>
+
+        <title>e-mail</title>
+    </h:head>
+    <h:body style="background-color: black">
+        <h:form id="formBotao" >                    
+            <p:poll interval="30" update="@form" global="false"/>    
+            <p:panel id="pParaUsu" style="background: #9C9C9C; border-style: solid" 
+                     rendered="#{usuarioadMB.status}">
+                <p:panelGrid columns="2" layout="grid" style="border-style:  hidden; "  >
+                    
+                        <p:commandButton   value="Stop Push Notification" 
+                                           action="#{usuarioadMB.pararUsuario()}"
+                                           update="@form"/>
+                    
+                    
+                        <h:outputLabel     id="codigo3"  
+                                           value ="#{usuarioadMB.vaUltimadata}"
+                                           style="color: white;width: 100px "/>
+                       
+                </p:panelGrid>    
+            </p:panel>
+            <p:panel id= "pIniciarUsu" style="background: #FF0000;border-style: solid" 
+                     rendered="#{!usuarioadMB.status}">
+                <p:panelGrid columns="2" layout="grid" style="border-style:  hidden; "  >
+                    
+                        <p:commandButton   value="Start Push Notification" 
+                                           action="#{usuarioadMB.criarUsuario()}"
+                                           update="@form"/>
+                    
+                    
+                        <h:outputLabel     id="codigo4"  
+                                           value ="#{usuarioadMB.vaUltimadata}"
+                                           style="color: white; width: 100px"/>
+                  
+                </p:panelGrid>
+            </p:panel>
+        </h:form>           
+    </h:body>
+</html>
+
